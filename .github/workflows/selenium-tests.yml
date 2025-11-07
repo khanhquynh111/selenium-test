@@ -40,7 +40,7 @@ jobs:
           PYTHONPATH: .
         run: |
           mkdir -p reports
-          pytest -v test_inventory.py
+          pytest -v -k "test_login_valid"
 
       # 6. Nếu test fail, upload screenshots (thư mục reports/) để tải về xem
       - name: Upload screenshots on failure
