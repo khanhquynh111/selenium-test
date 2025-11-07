@@ -40,7 +40,7 @@ jobs:
           PYTHONPATH: .
         run: |
           mkdir -p reports
-          pytest -v pytest -v test_logout.py
+          pytest -v test_logout.py
 
       # 6. Nếu test fail, upload screenshots (thư mục reports/) để tải về xem
       - name: Upload screenshots on failure
