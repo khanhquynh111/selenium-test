@@ -1,0 +1,52 @@
+name: Selenium WebDriver Tests
+
+on:
+  push:          # chạy khi đẩy code lên bất kỳ nhánh nào
+    branches: [ "**" ]
+  pull_request:  # chạy khi mở / cập nhật Pull Request
+    branches: [ "**" ]
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Lấy code trong repo
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      # 2. Cài Python
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # 3. Cài Google Chrome cho runner
+      - name: Install Google Chrome
+        uses: browser-actions/setup-chrome@v1
+
+      - name: Show Chrome version
+        run: chrome --version
+
+      # 4. Cài các thư viện Python (selenium, pytest, ...)
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # 5. Chạy pytest (Selenium WebDriver tests)
+      - name: Run Selenium pytest suite
+        env:
+          PYTHONPATH: .
+        run: |
+          mkdir -p reports
+          pytest -v
+
+      # 6. Nếu test fail, upload screenshots (thư mục reports/) để tải về xem
+      - name: Upload screenshots on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: selenium-screenshots
+          path: reports/
+          if-no-files-found: ignore
