@@ -130,7 +130,7 @@ class TestCart:
         WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.CLASS_NAME, "cart_list"))
         )
-        assert cart.is_cart_page_displayed(), "TC04 - EXPECTED: Phải đang ở trang giỏ hàng trước khi Back."
+        assert cart.is_cart_page_displayed(), "TC03 - EXPECTED: Phải đang ở trang giỏ hàng trước khi Back."
 
         # Quay lại trang Products (nút back riêng trong app hoặc browser)
         cart.click_back_to_products()
@@ -144,7 +144,7 @@ class TestCart:
         btn_text = cart.get_button_text("Sauce Labs Bike Light")
         print(f"[DEBUG] Nút sau khi back = {btn_text}")
         assert btn_text == "Remove", (
-            "TC04 - EXPECTED: Sau khi quay lại trang Products, sản phẩm vẫn ở trạng thái 'Remove' "
+            "TC03 - EXPECTED: Sau khi quay lại trang Products, sản phẩm vẫn ở trạng thái 'Remove' "
             "(giỏ hàng không bị mất dữ liệu).\n"
             f"ACTUAL: button text = '{btn_text}'"
         )

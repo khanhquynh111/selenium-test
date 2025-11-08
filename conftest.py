@@ -13,7 +13,7 @@ def driver():
     options.add_argument("--disable-notifications")
     options.add_argument("--disable-popup-blocking")
 
-    # 👇 bắt buộc cho môi trường CI (không có giao diện)
+    # bắt buộc cho môi trường CI (không có giao diện)
     options.add_argument("--headless=new")       # Chrome headless
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
