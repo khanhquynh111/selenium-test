@@ -20,7 +20,7 @@ Website demo sử dụng: [https://www.saucedemo.com/](https://www.saucedemo.com
 ### 1️⃣ Clone project
 
 ```bash
-git clone https://github.com/<your-account>/selenium-test.git
+git clone https://github.com/khanhquynh111/selenium-test.git
 cd selenium-test
 ```
 
